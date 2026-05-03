@@ -339,10 +339,6 @@
         <p class="subtitle">Ты — самое лучшее, что со мной случалось</p>
 
         <div class="photo">
-          <!-- ЗАМЕНА ФОТО:
-               1) Положи фото рядом с index.html, например: photo.jpg
-               2) Замени src на: "./photo.jpg"
-            -->
           <img
             src="./nastya.jpeg"
             alt="Наше фото"
@@ -407,7 +403,7 @@
         message.textContent = text;
 
         message.classList.remove("show");
-        // Перезапуск анимации (чтобы срабатывало при каждом клике)
+        // Перезапуск анимации 
         void message.offsetWidth;
         message.classList.add("show");
       }
@@ -415,7 +411,7 @@
       createHearts(18);
       loveBtn.addEventListener("click", showMessage);
 
-      // Показать первое сообщение через мгновение (приятный эффект)
+      // Показать первое сообщение через мгновение 
       window.addEventListener("load", () => {
         setTimeout(() => {
           showMessage();
