@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Самая красивая девушка ❤️</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --bg1: #ffb3d9;
+        --bg2: #bda7ff;
+        --bg3: #ffd6f3;
+        --card: rgba(255, 255, 255, 0.12);
+        --card2: rgba(255, 255, 255, 0.08);
+        --text: rgba(255, 255, 255, 0.92);
+        --muted: rgba(255, 255, 255, 0.78);
+        --shadow: rgba(33, 12, 44, 0.28);
+        --glow: rgba(255, 170, 220, 0.65);
+        --glow2: rgba(185, 150, 255, 0.6);
+        --btn: rgba(255, 255, 255, 0.18);
+        --btnHover: rgba(255, 255, 255, 0.26);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Playfair Display", serif;
+        color: var(--text);
+        overflow-x: hidden;
+        background: radial-gradient(1200px 600px at 15% 10%, rgba(255, 255, 255, 0.18), transparent 60%),
+          radial-gradient(900px 500px at 90% 15%, rgba(255, 255, 255, 0.12), transparent 55%),
+          linear-gradient(135deg, var(--bg1), var(--bg2) 55%, var(--bg3));
+      }
+
+      /* мягкий “туман” поверх фона */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: -40px;
+        pointer-events: none;
+        background: radial-gradient(600px 400px at 30% 65%, rgba(255, 179, 217, 0.20), transparent 60%),
+          radial-gradient(700px 500px at 70% 40%, rgba(189, 167, 255, 0.20), transparent 60%);
+        filter: blur(10px);
+        opacity: 0.95;
+        z-index: 0;
+        animation: haze 10s ease-in-out infinite alternate;
+      }
+
+      @keyframes haze {
+        0% {
+          transform: translate3d(0, 0, 0) scale(1);
+        }
+        100% {
+          transform: translate3d(0, -10px, 0) scale(1.02);
+        }
+      }
+
+      .hearts {
+        position: fixed;
+        inset: 0;
+        overflow: hidden;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .heart {
+        position: absolute;
+        left: var(--x);
+        bottom: -12vh;
+        opacity: 0;
+        font-size: var(--size);
+        filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.12));
+        animation: floatUp var(--dur) linear var(--delay) infinite;
+        will-change: transform, opacity;
+        transform: translate3d(0, 0, 0);
+      }
+
+      @keyframes floatUp {
+        0% {
+          transform: translate3d(0, 0, 0) scale(0.9);
+          opacity: 0;
+        }
+        10% {
+          opacity: var(--op);
+        }
+        100% {
+          transform: translate3d(var(--drift), -120vh, 0) scale(1.2) rotate(8deg);
+          opacity: 0;
+        }
+      }
+
+      .page {
+        min-height: 100svh;
+        display: grid;
+        place-items: center;
+        padding: 28px 18px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .card {
+        width: min(760px, 100%);
+        background: linear-gradient(180deg, var(--card), var(--card2));
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        border-radius: 26px;
+        box-shadow: 0 22px 60px var(--shadow);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        padding: 26px 20px 22px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        animation: fadeUp 900ms ease-out both;
+      }
+
+      .card::after {
+        content: "";
+        position: absolute;
+        inset: -2px;
+        background: radial-gradient(520px 220px at 50% 0%, rgba(255, 255, 255, 0.20), transparent 60%),
+          radial-gradient(420px 240px at 0% 40%, rgba(255, 170, 220, 0.20), transparent 55%),
+          radial-gradient(420px 240px at 100% 50%, rgba(185, 150, 255, 0.18), transparent 55%);
+        opacity: 0.8;
+        pointer-events: none;
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translate3d(0, 14px, 0);
+        }
+        to {
+          opacity: 1;
+          transform: translate3d(0, 0, 0);
+        }
+      }
+
+      .title {
+        font-family: "Great Vibes", cursive;
+        font-weight: 400;
+        font-size: clamp(44px, 6vw, 74px);
+        margin: 8px 0 8px;
+        line-height: 1.05;
+        text-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
+        position: relative;
+      }
+
+      .title .glow {
+        position: absolute;
+        inset: auto 0 -6px 0;
+        height: 14px;
+        margin: 0 auto;
+        width: min(520px, 84%);
+        filter: blur(18px);
+        background: radial-gradient(closest-side, var(--glow), transparent 65%);
+        opacity: 0.85;
+        z-index: -1;
+      }
+
+      .subtitle {
+        margin: 0 auto 16px;
+        max-width: 52ch;
+        font-size: clamp(16px, 2.3vw, 20px);
+        color: var(--muted);
+        line-height: 1.45;
+        animation: fadeIn 900ms ease-out 180ms both;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translate3d(0, 6px, 0);
+        }
+        to {
+          opacity: 1;
+          transform: translate3d(0, 0, 0);
+        }
+      }
+
+      .photo {
+        width: min(380px, 86%);
+        margin: 12px auto 18px;
+        border-radius: 22px;
+        overflow: hidden;
+        box-shadow: 0 18px 46px rgba(0, 0, 0, 0.22);
+        border: 1px solid rgba(255, 255, 255, 0.24);
+        position: relative;
+        transform: translateZ(0);
+        animation: pop 900ms cubic-bezier(0.2, 0.9, 0.2, 1) 260ms both;
+      }
+
+      @keyframes pop {
+        from {
+          opacity: 0;
+          transform: translate3d(0, 10px, 0) scale(0.98);
+        }
+        to {
+          opacity: 1;
+          transform: translate3d(0, 0, 0) scale(1);
+        }
+      }
+
+      .photo img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .photo::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(420px 240px at 40% 25%, rgba(255, 255, 255, 0.22), transparent 60%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.10), transparent 45%);
+        pointer-events: none;
+      }
+
+      .actions {
+        display: grid;
+        justify-items: center;
+        gap: 14px;
+        margin-top: 6px;
+      }
+
+      .btn {
+        appearance: none;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        background: linear-gradient(180deg, var(--btn), rgba(255, 255, 255, 0.10));
+        color: var(--text);
+        font-family: "Playfair Display", serif;
+        font-weight: 600;
+        letter-spacing: 0.2px;
+        padding: 12px 18px;
+        border-radius: 999px;
+        cursor: pointer;
+        box-shadow: 0 16px 34px rgba(0, 0, 0, 0.18),
+          0 0 0 0 rgba(255, 170, 220, 0.0);
+        transition: transform 160ms ease, box-shadow 240ms ease, background 240ms ease;
+      }
+
+      .btn:hover {
+        background: linear-gradient(180deg, var(--btnHover), rgba(255, 255, 255, 0.12));
+        box-shadow: 0 18px 38px rgba(0, 0, 0, 0.18),
+          0 0 24px 0 rgba(255, 170, 220, 0.22);
+        transform: translateY(-1px);
+      }
+
+      .btn:active {
+        transform: translateY(1px) scale(0.99);
+      }
+
+      .btn:focus-visible {
+        outline: 3px solid rgba(255, 255, 255, 0.35);
+        outline-offset: 3px;
+      }
+
+      .message {
+        min-height: 34px;
+        padding: 10px 14px;
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.20);
+        background: rgba(255, 255, 255, 0.10);
+        box-shadow: 0 14px 26px rgba(0, 0, 0, 0.12);
+        color: rgba(255, 255, 255, 0.92);
+        font-size: 18px;
+        line-height: 1.25;
+        opacity: 0;
+        transform: translate3d(0, 6px, 0) scale(0.98);
+        transition: opacity 260ms ease, transform 260ms ease;
+      }
+
+      .message.show {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) scale(1);
+        animation: sparkle 900ms ease-out 1;
+      }
+
+      @keyframes sparkle {
+        0% {
+          box-shadow: 0 14px 26px rgba(0, 0, 0, 0.12);
+        }
+        35% {
+          box-shadow: 0 18px 34px rgba(0, 0, 0, 0.16),
+            0 0 32px rgba(255, 170, 220, 0.32),
+            0 0 26px rgba(185, 150, 255, 0.24);
+        }
+        100% {
+          box-shadow: 0 14px 26px rgba(0, 0, 0, 0.12);
+        }
+      }
+
+      .hint {
+        margin-top: 4px;
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .foot {
+        margin-top: 14px;
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.68);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation: none !important;
+          transition: none !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="hearts" aria-hidden="true" id="hearts"></div>
+
+    <main class="page">
+      <section class="card" role="region" aria-label="Романтическая открытка">
+        <h1 class="title">
+          Самая красивая девушка ❤️
+          <span class="glow" aria-hidden="true"></span>
+        </h1>
+
+        <p class="subtitle">Ты — самое лучшее, что со мной случалось</p>
+
+        <div class="photo">
+          <!-- ЗАМЕНА ФОТО:
+               1) Положи фото рядом с index.html, например: photo.jpg
+               2) Замени src на: "./photo.jpg"
+            -->
+          <img
+            src="./0F61ED79-571E-4896-8484-74DE3D0B1002_1_105_c.jpeg"
+            alt="Наше фото"
+            loading="lazy"
+          />
+        </div>
+
+        <div class="actions">
+          <button class="btn" id="loveBtn" type="button">Нажми сюда</button>
+          <div class="message" id="message" aria-live="polite"></div>
+          <div class="hint">Подсказка: можно нажимать несколько раз</div>
+        </div>
+
+        <div class="foot">С любовью и теплом.</div>
+      </section>
+    </main>
+
+    <script>
+      const heartsRoot = document.getElementById("hearts");
+      const loveBtn = document.getElementById("loveBtn");
+      const message = document.getElementById("message");
+
+      const messages = [
+        "Я тебя люблю 💖",
+        "Ты моё счастье ✨",
+        "Ты самая нежная 🌸",
+        "С тобой — идеально 💫",
+      ];
+
+      function randomBetween(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+
+      function createHearts(count = 18) {
+        const heartChars = ["❤", "💗", "💖", "💜", "💕"];
+
+        for (let i = 0; i < count; i++) {
+          const h = document.createElement("div");
+          h.className = "heart";
+          h.textContent = heartChars[Math.floor(Math.random() * heartChars.length)];
+
+          const x = randomBetween(0, 100);
+          const size = randomBetween(14, 28);
+          const dur = randomBetween(10, 18);
+          const delay = randomBetween(0, 6);
+          const drift = `${randomBetween(-18, 18)}vw`;
+          const op = randomBetween(0.25, 0.65).toFixed(2);
+
+          h.style.setProperty("--x", `${x}vw`);
+          h.style.setProperty("--size", `${size}px`);
+          h.style.setProperty("--dur", `${dur}s`);
+          h.style.setProperty("--delay", `${delay}s`);
+          h.style.setProperty("--drift", drift);
+          h.style.setProperty("--op", op);
+
+          heartsRoot.appendChild(h);
+        }
+      }
+
+      function showMessage() {
+        const text = messages[Math.floor(Math.random() * messages.length)];
+        message.textContent = text;
+
+        message.classList.remove("show");
+        // Перезапуск анимации (чтобы срабатывало при каждом клике)
+        void message.offsetWidth;
+        message.classList.add("show");
+      }
+
+      createHearts(18);
+      loveBtn.addEventListener("click", showMessage);
+
+      // Показать первое сообщение через мгновение (приятный эффект)
+      window.addEventListener("load", () => {
+        setTimeout(() => {
+          showMessage();
+        }, 650);
+      });
+    </script>
+  </body>
+</html>
